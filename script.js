@@ -4,6 +4,29 @@ var generateBtn = document.querySelector("#generate");
 var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var specialChr = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~", "\"", "\'"]
+var characterToUse = new Array();
+
+// lCCheck is x, uCCheck is y and sCCheck is z
+function chooseCharacters(x, y, z) {
+  if (x && y && z) {
+    characterToUse = lowerCase.concat(upperCase).concat(specialChr);
+  } else if (x && y) {
+    characterToUse = lowerCase.concat(upperCase);
+  } else if (y && z) {
+    characterToUse = upperCase.concat(specialChr);
+  } else if (z && x) {
+    characterToUse = specialChr.concat(lowerCase);
+  } else if (x) {
+    characterToUse = lowerCase;
+  } else if (y) {
+    characterToUse = upperCase;
+  } else if (z) {
+    characterToUse = specialChr;
+  } else {
+    alert("You need to choose at least one type of characters.");
+    return;
+  }
+}
 
 function generatePassword() {
   // Gets user input to select character type
@@ -16,24 +39,26 @@ function generatePassword() {
   var characterIndex
 
   // Checks which characters the user chose and creates one arry
-  if (lCCheck && uCCheck && sCCheck) {
-    var characterToUse = lowerCase.concat(upperCase).concat(specialChr);
-  } else if (lCCheck && uCCheck) {
-    var characterToUse = lowerCase.concat(upperCase);
-  } else if (uCCheck && sCCheck) {
-    var characterToUse = upperCase.concat(specialChr);
-  } else if (sCCheck && lCCheck) {
-    var characterToUse = specialChr.concat(lowerCase);
-  } else if (lCCheck) {
-    var characterToUse = lowerCase;
-  } else if (uCCheck) {
-    var characterToUse = upperCase;
-  } else if (sCCheck) {
-    var characterToUse = specialChr;
-  } else {
-    alert("You need to choose at least one type of characters.");
-    return;
-  }
+  // if (lCCheck && uCCheck && sCCheck) {
+  //   var characterToUse = lowerCase.concat(upperCase).concat(specialChr);
+  // } else if (lCCheck && uCCheck) {
+  //   var characterToUse = lowerCase.concat(upperCase);
+  // } else if (uCCheck && sCCheck) {
+  //   var characterToUse = upperCase.concat(specialChr);
+  // } else if (sCCheck && lCCheck) {
+  //   var characterToUse = specialChr.concat(lowerCase);
+  // } else if (lCCheck) {
+  //   var characterToUse = lowerCase;
+  // } else if (uCCheck) {
+  //   var characterToUse = upperCase;
+  // } else if (sCCheck) {
+  //   var characterToUse = specialChr;
+  // } else {
+  //   alert("You need to choose at least one type of characters.");
+  //   return;
+  // }
+
+  chooseCharacters(lCCheck, uCCheck, sCCheck);
 
   //user choose password length
   var length = parseInt(prompt("How long do you want it between 8 and 128 characters?", "1"), 10);
