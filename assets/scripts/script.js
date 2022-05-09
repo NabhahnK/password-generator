@@ -42,7 +42,7 @@ function generatePassword() {
   chooseCharacters(lCCheck, uCCheck, sCCheck);
 
   //user choose password length
-  var length = parseInt(prompt("How long do you want it between 8 and 128 characters?", "1"), 10);
+  var length = parseInt(prompt("How long do you want it to be, between 8 and 128 characters?", "1"), 10);
 
   // Breaks funcion if length is invalid
   if (length < 8 || length > 128) {
