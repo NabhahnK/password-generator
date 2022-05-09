@@ -7,6 +7,7 @@ var specialChr = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".
 var characterToUse = new Array();
 
 // lCCheck is x, uCCheck is y and sCCheck is z
+// Checks which characters the user chose and creates one arry
 function chooseCharacters(x, y, z) {
   if (x && y && z) {
     characterToUse = lowerCase.concat(upperCase).concat(specialChr);
@@ -37,26 +38,6 @@ function generatePassword() {
   // Generates an empty array and variable
   var tempPassword = new Array();
   var characterIndex
-
-  // Checks which characters the user chose and creates one arry
-  // if (lCCheck && uCCheck && sCCheck) {
-  //   var characterToUse = lowerCase.concat(upperCase).concat(specialChr);
-  // } else if (lCCheck && uCCheck) {
-  //   var characterToUse = lowerCase.concat(upperCase);
-  // } else if (uCCheck && sCCheck) {
-  //   var characterToUse = upperCase.concat(specialChr);
-  // } else if (sCCheck && lCCheck) {
-  //   var characterToUse = specialChr.concat(lowerCase);
-  // } else if (lCCheck) {
-  //   var characterToUse = lowerCase;
-  // } else if (uCCheck) {
-  //   var characterToUse = upperCase;
-  // } else if (sCCheck) {
-  //   var characterToUse = specialChr;
-  // } else {
-  //   alert("You need to choose at least one type of characters.");
-  //   return;
-  // }
 
   chooseCharacters(lCCheck, uCCheck, sCCheck);
 
